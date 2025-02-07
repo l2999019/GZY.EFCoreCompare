@@ -1,4 +1,4 @@
-﻿namespace GZY.EFCoreCompare.Core
+﻿namespace GZY.EFCoreCompare.UI
 {
     public class Class1
     {

@@ -5,6 +5,14 @@ VisualStudioVersion = 17.12.35521.163 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZY.EFCoreCompare.Core", "GZY.EFCoreCompare.Core\GZY.EFCoreCompare.Core.csproj", "{DF199856-A9C3-4705-9BA1-1CB4C6AB4463}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZY.EFCoreCompare.UI", "GZY.EFCoreCompare.UI\GZY.EFCoreCompare.UI.csproj", "{EA3030D9-F470-473D-8E82-22522831D550}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZY.EFCoreCompare.MySql", "GZY.EFCoreCompare.MySql\GZY.EFCoreCompare.MySql.csproj", "{8104ACC9-2F16-4FC0-AD4D-9D87627C96FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZY.EFCoreCompare.Dm", "GZY.EFCoreCompare.Dm\GZY.EFCoreCompare.Dm.csproj", "{B6FC0CD3-23D6-472B-87E8-31D1D8635E25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZY.EFCoreCompare.SqlServer", "GZY.EFCoreCompare.SqlServer\GZY.EFCoreCompare.SqlServer.csproj", "{329A81F1-514C-42E8-A049-93D8404D4AB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{DF199856-A9C3-4705-9BA1-1CB4C6AB4463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF199856-A9C3-4705-9BA1-1CB4C6AB4463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF199856-A9C3-4705-9BA1-1CB4C6AB4463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3030D9-F470-473D-8E82-22522831D550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3030D9-F470-473D-8E82-22522831D550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3030D9-F470-473D-8E82-22522831D550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3030D9-F470-473D-8E82-22522831D550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8104ACC9-2F16-4FC0-AD4D-9D87627C96FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8104ACC9-2F16-4FC0-AD4D-9D87627C96FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8104ACC9-2F16-4FC0-AD4D-9D87627C96FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8104ACC9-2F16-4FC0-AD4D-9D87627C96FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6FC0CD3-23D6-472B-87E8-31D1D8635E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6FC0CD3-23D6-472B-87E8-31D1D8635E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6FC0CD3-23D6-472B-87E8-31D1D8635E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6FC0CD3-23D6-472B-87E8-31D1D8635E25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329A81F1-514C-42E8-A049-93D8404D4AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329A81F1-514C-42E8-A049-93D8404D4AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329A81F1-514C-42E8-A049-93D8404D4AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329A81F1-514C-42E8-A049-93D8404D4AB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
