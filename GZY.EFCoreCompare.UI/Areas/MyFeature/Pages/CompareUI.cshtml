@@ -1,0 +1,134 @@
+﻿@page "/DBCompareUI"
+@model GZY.EFCoreCompare.UI.Areas.MyFeature.Pages.CompareUIModel
+@{
+    Layout = "_JavasCriptLayout";
+}
+<div id="main">
+    <el-container>
+        <el-header style="padding: 0;">
+            <!-- 头部样式 -->
+            <el-menu :default-active="activeIndex" mode="horizontal" background-color="#fcfcfc">
+                <el-menu-item index="1">EF实体与数据库对比</el-menu-item>
+            </el-menu>
+        </el-header>
+        <el-main>
+            <el-row type="flex" align="middle">
+                <el-col :span="8">
+                    <h4></h4>
+                </el-col>
+                <el-col :span="16" style="text-align: right;">
+                    <el-button type="success" size="mini" icon="el-icon-refresh" @@click="OnLoadCompares">开始对比</el-button>
+                    <el-button type="danger" size="mini" icon="el-icon-finished" @@click="OnDownLoadExecle">导出Execle</el-button>
+                </el-col>
+            </el-row>
+            <el-row type="flex" align="middle">
+                <el-col :span="24" style="padding: 10px 0 0 0;">
+                    <el-table ref="tb" :data="tableData" border stripe style="width: 100%;" :height="tableheight" highlight-current-row
+                              :default-sort="{prop: 'tableName', order: 'ascending'}" :header-cell-style="{backgroundColor:'#F5F7FA',color:'#000000'}" @@current-change="handleSelect">
+                        <el-table-column type="index" width="50" label="序号" align="center">
+                        </el-table-column>
+                        <el-table-column prop="databaseName" label="实体上下文" width="180" align="center">
+                        </el-table-column>
+                        <el-table-column prop="tableName" label="表名" width="180" align="center" sortable>
+                        </el-table-column>
+                        <el-table-column prop="type" label="比较的类型" align="center">
+                        </el-table-column>
+                        <el-table-column prop="state" label="比较的结果" align="center">
+                        </el-table-column>
+                        <el-table-column prop="name"  label="比较的内容" align="center" sortable>
+                        </el-table-column>
+                        <el-table-column prop="attribute" label="比较的内容的特性" align="center">
+                        </el-table-column>
+                        <el-table-column prop="expected" label="实体中的内容" :show-overflow-tooltip="true" align="center">
+                        </el-table-column>
+                        <el-table-column prop="found" label="数据库中的内容" align="center">   
+                        </el-table-column>
+                    </el-table>
+                </el-col>
+            </el-row>
+        </el-main>
+    </el-container>
+</div>
+@section Scripts{
+<script type="text/javascript">
+        new Vue({
+            el: "#main",
+            data() {
+                return {
+                    activeIndex: '1',
+                    tableheight: 200,
+                    tableData:[],
+                    currentPage: 1,
+                    total: 0,
+                    pageSize: 20,
+                    pageSizes: [20, 30, 40, 50],
+                    selectrow: ""
+                }
+            },
+            mounted: function () {
+                this.$nextTick(function () {
+                    this.tableheight = window.innerHeight - 190;
+                });
+            },
+            methods: {
+                FormatProgress(percentage) {
+                    return '100';
+                },
+                 OnLoadCompares(){
+                    var that = this;
+                    axios("?handler=SelectCompare").then(function (res) {
+                        that.tableData = res.data;
+                    });
+                },
+                 OnDownLoadExecle(){
+                    var that = this;
+                    axios("?handler=DownLoadExecle",{responseType: 'blob',}).then(function (res) {
+                                if (res.headers["content-type"].includes("application/json")) {
+                                        const reader = new FileReader();
+                                        reader.onload = () => {
+                                                ELEMENT.MessageBox.alert(JSON.parse(reader.result).message, "系统提示");
+                                         };
+                                        reader.readAsText(res.data);
+                                    
+                                } else {
+                                       var blob = new Blob([res.data], { type: "application/octetstream" });
+                                       var fileName = '数据库与实体的差异.xlsx';
+                                       var elink = document.createElement('a');
+                                       elink.download = fileName;
+                                       elink.style.display = 'none';
+                                       elink.href = URL.createObjectURL(blob);
+                                       document.body.appendChild(elink);
+                                       elink.click();
+                                       URL.revokeObjectURL(elink.href); // 释放URL 对象
+                                       document.body.removeChild(elink);
+                                }
+                            
+
+                    });
+                },
+            },
+            filters: {
+                formatStatues(val) {
+                    switch (val) {
+                        case 1:
+                            return '新增';
+                        case 2:
+                            return '删除';
+                        case 3:
+                            return '修改';
+                        case 4:
+                            return '暂停';
+                        case 5:
+                            return '停止';
+                        case 6:
+                            return '开启';
+                        case 7:
+                            return '立即执行';
+                        default:
+                            return "";
+                    }
+                }
+            }
+        });
+</script>
+}

@@ -14,10 +14,31 @@ namespace GZY.EFCoreCompare.Core
     public class CompareEFCore
     {
         private readonly CompareEFCoreConfig _config;
+        private readonly DbContext? _dbContext;
         public List<CompareInfo> compareInfos = new List<CompareInfo>();
-        public CompareEFCore(CompareEFCoreConfig config = null)
+        public CompareEFCore(CompareEFCoreConfig? config =null)
         {
             _config = config ?? new CompareEFCoreConfig();
+        }
+        public CompareEFCore(DbContext dbContext, CompareEFCoreConfig? config = null)
+        {
+            _dbContext = dbContext;
+            _config = config ?? new CompareEFCoreConfig();
+        }
+        public async Task<bool> CompareEfWithDbAsync()
+        {
+            return await Task.Run<bool>(() => { return CompareEfWithDb(); });
+        }
+
+        public async Task<bool> CompareEfWithDbAsync(DbContext dbContexts)
+        {
+            return await Task.Run<bool>(() => { return CompareEfWithDb(dbContexts); });
+        }
+
+        public bool CompareEfWithDb()
+        {
+            if (_dbContext == null) throw new ArgumentNullException(nameof(_dbContext));
+            return CompareEfWithDb(_dbContext);
         }
         public bool CompareEfWithDb(DbContext dbContexts)
         {
@@ -66,11 +87,18 @@ namespace GZY.EFCoreCompare.Core
             {
                 databaseType = SqlType.Sqlite;
             }
+#if NET7_0_OR_GREATER
+            else if (providerName?.StartsWith(SqlType.Dm.ToString(), ignoreCase) ?? false) // ProviderName:DM.Microsoft.EntityFrameworkCore
+            {
+                databaseType = SqlType.Dm;
+            }
+#else
+
             else if (providerName?.EndsWith(SqlType.Dm.ToString(), ignoreCase) ?? false) // ProviderName: Microsoft.EntityFrameworkCore.Dm
             {
                 databaseType = SqlType.Dm;
             }
-
+#endif
             string namespaceSqlAdaptersTEXT = "GZY.EFCoreCompare";
             Type? dbServerType = null;
 
@@ -78,21 +106,21 @@ namespace GZY.EFCoreCompare.Core
             {
                 dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".SqlServer,GZY.EFCoreCompare.SqlServer");
             }
-            else if (databaseType == SqlType.PostgreSql)
-            {
-                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".PostgreSql,GZY.EFCoreCompare.PostgreSql");
-            }
+            //else if (databaseType == SqlType.PostgreSql)
+            //{
+            //    dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".PostgreSql,GZY.EFCoreCompare.PostgreSql");
+            //}
             else if (databaseType == SqlType.MySql)
             {
-                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".MySql,GZY.EFCoreCompare.MySql.MySqlDatabaseModelCompareFactory");
+                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".MySql.MySqlDatabaseModelCompareFactory,GZY.EFCoreCompare.MySql");
             }
-            else if (databaseType == SqlType.Sqlite)
-            {
-                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".Sqlite,GZY.EFCoreCompare.Sqlite");
-            }
+            //else if (databaseType == SqlType.Sqlite)
+            //{
+            //    dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".Sqlite,GZY.EFCoreCompare.Sqlite");
+            //}
             else if (databaseType == SqlType.Dm)
             {
-                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".Dm,GZY.EFCoreCompare.Dm");
+                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".Dm.DmDatabaseModelCompareFactory,GZY.EFCoreCompare.Dm");
             }
             var databaseModelCompareFactory = Activator.CreateInstance(dbServerType ?? typeof(int));
             var databaseModelFactory = databaseModelCompareFactory as IDatabaseModelCompareFactory;
