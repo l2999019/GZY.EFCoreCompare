@@ -24,7 +24,7 @@
             <el-row type="flex" align="middle">
                 <el-col :span="24" style="padding: 10px 0 0 0;">
                     <el-table ref="tb" :data="tableData" border stripe style="width: 100%;" :height="tableheight" highlight-current-row
-                              :default-sort="{prop: 'tableName', order: 'ascending'}" :header-cell-style="{backgroundColor:'#F5F7FA',color:'#000000'}" @@current-change="handleSelect">
+                              :default-sort="{prop: 'tableName', order: 'ascending'}" :header-cell-style="{backgroundColor:'#F5F7FA',color:'#000000'}">
                         <el-table-column type="index" width="50" label="序号" align="center">
                         </el-table-column>
                         <el-table-column prop="databaseName" label="实体上下文" width="180" align="center">

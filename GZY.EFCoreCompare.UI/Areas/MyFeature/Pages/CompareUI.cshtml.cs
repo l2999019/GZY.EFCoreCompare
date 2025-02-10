@@ -56,7 +56,6 @@ public class CompareUIModel : PageModel
             return new JsonResult(new {message="还未比对数据!" ,code=1});
         }
         var ms = ExcelHelper.ExportToExcelMemoryStream_EnumToDescription(dbcompareInfos);
-        System.IO.File.WriteAllBytes("D:/output.xlsx", ms.ToArray());
         return File(ms.ToArray(), "application/octet-stream", "数据库与实体的差异.xlsx");
         
     }
