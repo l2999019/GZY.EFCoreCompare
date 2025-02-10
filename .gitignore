@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GZY.EFCoreCompare.Test/GZY.EFCoreCompare.Test.csproj
+/GZY.EFCoreCompare.Test
