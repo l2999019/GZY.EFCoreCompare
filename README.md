@@ -32,13 +32,13 @@
   
 ## 使用方式
 ### **1. 直接使用 GZY.EFCoreCompare.Core 进行比对**
-直接在项目中引用`GZY.EFCoreCompare.Core`与对应数据库的驱动库,例:`GZY.EFCoreCompare.MySql` 库中，比对代码如下：
+直接在项目中通过Nuget引用`GZY.EFCoreCompare.Core`与对应数据库的驱动库,例:`GZY.EFCoreCompare.MySql` 库中，比对代码如下：
 ```csharp
 var compareEFcore= new CompareEFCore();
 compareEFcore.CompareEfWithDbAsync(YourDbContext);
 ```
 ### **2. 集成图形化UI到项目中,进行持久化比对**
-- 在**Web(MVC Raroz)或WebApi**项目中引用`GZY.EFCoreCompare.UI`与对应的数据库驱动,例如:`GZY.EFCoreCompare.MySql` 
+- 在**Web(MVC Raroz)或WebApi**项目中通过Nuget引用`GZY.EFCoreCompare.UI`与对应的数据库驱动,例如:`GZY.EFCoreCompare.MySql` 
 - 在 **Program或Startup**中添加如下代码:
 ```csharp
  builder.Services.AddDbContext<TestDbContext>(options =>
