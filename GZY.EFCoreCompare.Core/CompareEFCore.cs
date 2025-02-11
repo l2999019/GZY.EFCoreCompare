@@ -104,7 +104,7 @@ namespace GZY.EFCoreCompare.Core
 
             if (databaseType == SqlType.SqlServer)
             {
-                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".SqlServer,GZY.EFCoreCompare.SqlServer");
+                dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".SqlServer.SqlServerDatabaseModelCompareFactory,GZY.EFCoreCompare.SqlServer");
             }
             //else if (databaseType == SqlType.PostgreSql)
             //{

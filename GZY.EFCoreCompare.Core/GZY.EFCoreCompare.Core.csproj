@@ -1,10 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <Version>8.0.1</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/l2999019/GZY.EFCoreCompare</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/l2999019/GZY.EFCoreCompare</PackageProjectUrl>
+    <Description>
+      GZY.EFCoreCompare 是一个用于 对比数据库结构和 EF Core 代码中的 DbContext 的库。
+      它基于 EF Core 的 Scaffolding 机制，生成 DatabaseModel（从数据库提取的模型），
+      并与代码中的 DbContext 进行比对，从而找出两者之间的差异。
+    </Description>
+    <Copyright>GuZhenYin</Copyright>
+    <AssemblyVersion>2.7.0</AssemblyVersion>
+    <FileVersion>2.7.0</FileVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>GZY.EFCoreCompare.Core</Title>
+    <Authors>GuZhenYin</Authors>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.12" />
