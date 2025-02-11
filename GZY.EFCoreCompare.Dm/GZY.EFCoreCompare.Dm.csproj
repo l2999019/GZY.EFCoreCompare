@@ -7,9 +7,7 @@
     <RepositoryUrl>https://github.com/l2999019/GZY.EFCoreCompare</RepositoryUrl>
     <PackageProjectUrl>https://github.com/l2999019/GZY.EFCoreCompare</PackageProjectUrl>
     <Description>
-      GZY.EFCoreCompare 是一个用于 对比数据库结构和 EF Core 代码中的 DbContext 的库。
-      它基于 EF Core 的 Scaffolding 机制，生成 DatabaseModel（从数据库提取的模型），
-      并与代码中的 DbContext 进行比对，从而找出两者之间的差异。
+      GZY.EFCoreCompare 是一个用于 对比数据库结构和 EF Core 代码中的 DbContext 的库。它基于 EF Core 的 Scaffolding 机制，生成 DatabaseModel（从数据库提取的模型），并与代码中的 DbContext 进行比对，从而找出两者之间的差异。
     </Description>
     <Copyright>GuZhenYin</Copyright>
     <AssemblyVersion>2.7.0</AssemblyVersion>
