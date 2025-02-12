@@ -23,7 +23,7 @@
 1. **获取数据库结构**  
    使用 EF Core **Scaffolding** 解析数据库，并生成 `DatabaseModel`。  
 2. **读取代码中的 `DbContext`**  
-   反射或解析代码中的 `DbContext` 及其实体。  
+   解析代码中的 `DbContext` 及其实体。  
 3. **比对两者的差异**  
    找出 **表、字段、类型、索引、主键、外键** 等方面的不同。  
 4. **提供UI查看界面与Execl报告**  
