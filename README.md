@@ -2,6 +2,11 @@
 
 **GZY.EFCoreCompare** 是一个用于 **对比数据库结构和 EF Core 代码中的 DbContext** 的库。它基于 **EF Core 的 Scaffolding** 机制，生成 `DatabaseModel`（从数据库提取的模型），并与代码中的 `DbContext` 进行比对，从而找出两者之间的差异。
 
+|Licence| Build | NuGet | Support |
+|--|--|--|--|
+|![](https://svg.hamm.cn/badge.svg?key=Licence&value=MIT&color=e0861a)|![](https://svg.hamm.cn/badge.svg?key=.Net8.0&value=passing&color=45b97c)|[![](https://img.shields.io/nuget/dt/GZY.EFCoreCompare.Core)](https://www.nuget.org/packages/GZY.EFCoreCompare.Core)|.Net8.0&.Net9.0
+
+
 ## 主要用途
 1. **检查数据库与代码是否匹配**  
    - 通过 **EF Core Scaffolding** 解析数据库结构（`DatabaseModel`）。  
