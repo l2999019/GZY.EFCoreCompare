@@ -10,7 +10,7 @@
 ## 主要用途
 1. **检查数据库与代码是否匹配**  
    - 通过 **EF Core Scaffolding** 解析数据库结构（`DatabaseModel`）。  
-   - 读取代码中的 `DbContext` 及其 `DbSet<TEntity>` 实体定义。  
+   - 读取代码中的 `DbContext` 及其 `EntityType` 实体定义。  
    - 对比两者的字段、表、主键、索引等内容。  
 
 2. **检测并生成数据库更新 SQL**  
